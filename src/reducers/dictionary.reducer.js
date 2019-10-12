@@ -2,6 +2,7 @@ import _ from 'lodash'
 
 const initialDictionaryState = {
     dictionary: {},
+    activePath: ""
 };
 
 function dictionaryReducer(state, action) {
@@ -9,12 +10,16 @@ function dictionaryReducer(state, action) {
 
     switch (action.type) {
 
-        case "set":
+        case "setDictionary":
             return {
                 ...state,
                 dictionary: action.dictionary
             };
-
+        case "setActivePath":
+            return {
+                ...state,
+                activePath: action.path
+            };
         case "update":
             let newDictionary = Object.assign({},dictionary);
             _.set(newDictionary,action.path,action.value);

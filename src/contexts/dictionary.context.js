@@ -1,7 +1,9 @@
 import { createContext } from 'react';
 
 const DictionaryContext = createContext({
-    dictionary:{}
+    dictionary:{},
+    activePath: '',
+    dispatchDictionaryAction: () =>{}
 });
 
 export default DictionaryContext;

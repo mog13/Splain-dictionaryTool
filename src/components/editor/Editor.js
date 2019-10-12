@@ -8,11 +8,12 @@ function Editor({children, loadedDictionary}) {
     useEffect(()=>{
         if(loadedDictionary) {
             console.log('loading given dictionary');
-            dispatch({type:'set',dictionary:loadedDictionary})
+            dispatch({type:'setDictionary',dictionary:loadedDictionary})
         }
     },[loadedDictionary]);
 
-    return <Dictionary.Provider value={{dictionary:state.dictionary}}>
+
+    return <Dictionary.Provider value={{...state, dispatchDictionaryAction:dispatch}}>
         {children}
     </Dictionary.Provider>;
 
