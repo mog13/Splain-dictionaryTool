@@ -1,12 +1,18 @@
-import React, {useReducer} from 'react';
+import React, {useReducer, useEffect} from 'react';
 
 import {dictionaryReducer, initialDictionaryState} from '../../reducers/dictionary.reducer';
 import Dictionary from '../../contexts/dictionary.context'
-function Editor({children}) {
+function Editor({children, loadedDictionary}) {
     const [state, dispatch] = useReducer(dictionaryReducer, initialDictionaryState);
 
+    useEffect(()=>{
+        if(loadedDictionary) {
+            console.log('loading given dictionary');
+            dispatch({type:'set',dictionary:loadedDictionary})
+        }
+    },[loadedDictionary]);
+
     return <Dictionary.Provider value={{dictionary:state.dictionary}}>
-        {JSON.stringify(state.dictionary)}
         {children}
     </Dictionary.Provider>;
 

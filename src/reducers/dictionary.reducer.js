@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 const initialDictionaryState = {
-    dictionary: {test:'hello'}
+    dictionary: {},
 };
 
 function dictionaryReducer(state, action) {

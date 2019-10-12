@@ -1,0 +1,42 @@
+.explorer {
+  &__entry, &__dictionary-key {
+    padding-left: var(--grid-step);
+    cursor: pointer;
+
+    &__title{
+      &--opened{
+
+      }
+    }
+  }
+
+  &__dictionary-key {
+    &__title {
+
+      &::after {
+        border-style: solid;
+        border-width: 0.1em 0.1em 0 0;
+        opacity: 0.5;
+        content: '';
+        display: inline-block;
+        height: 0.25em;
+        left: 0.5em;
+        position: relative;
+        top: 0.45em;
+        transform: rotate(135deg);
+        vertical-align: top;
+        width: 0.25em;
+      }
+      &--opened {
+
+        &:after{
+
+          top: 0.6em;
+          transform: rotate(-45deg);
+
+        }
+      }
+    }
+  }
+
+}
