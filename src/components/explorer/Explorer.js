@@ -5,7 +5,7 @@ import './explorer.scss'
 
 function Explorer() {
     return <div>
-          <DictionaryKey path="entries"/>
+          <DictionaryKey key={"entries"} path="entries"/>
         </div>;
 }
 
