@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from 'react';
 import _ from 'lodash';
 import DictionaryContext from "../../contexts/dictionary.context";
 import Entry from "./Entry";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 function DictionaryKey({path}) {
