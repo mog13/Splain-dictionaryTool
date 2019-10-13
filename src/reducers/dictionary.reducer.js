@@ -6,6 +6,7 @@ const initialDictionaryState = {
 };
 
 function dictionaryReducer(state, action) {
+    let newDictionary;
     const {dictionary} = state;
 
     switch (action.type) {
@@ -20,13 +21,26 @@ function dictionaryReducer(state, action) {
                 ...state,
                 activePath: action.path
             };
-        case "update":
-            let newDictionary = Object.assign({},dictionary);
-            _.set(newDictionary,action.path,action.value);
+
+        //new entries will only ever be objects, pass index
+        case "UpdateEntry":
+            if (!action.path || !action.newEntry || action.index === undefined) return state;
+            newDictionary = Object.assign({}, dictionary);
+            let newEntries = _.get(newDictionary,action.path);
+            if(action.index >= newEntries.length) {
+                newEntries.push(action.newEntry);
+            }
+            else{
+                newEntries[action.index] =  action.newEntry;
+            }
+
+            _.set(newDictionary,action.path,newEntries);
+
             return {
                 ...state,
                 dictionary: newDictionary
             };
+
 
 
         default:
