@@ -1,9 +1,14 @@
 import _ from 'lodash'
+import Splain from "@mog13/splain"
 
 const initialDictionaryState = {
     dictionary: {},
     activePath: ""
 };
+
+function setSplainDictionary(newDictionary) {
+      Splain.addEntry(Object.assign({},newDictionary.entries));
+}
 
 function dictionaryReducer(state, action) {
     let newDictionary;
@@ -12,6 +17,7 @@ function dictionaryReducer(state, action) {
     switch (action.type) {
 
         case "setDictionary":
+            setSplainDictionary(action.dictionary);
             return {
                 ...state,
                 dictionary: action.dictionary
@@ -35,7 +41,7 @@ function dictionaryReducer(state, action) {
             }
 
             _.set(newDictionary,action.path,newEntries);
-
+            setSplainDictionary(newDictionary);
             return {
                 ...state,
                 dictionary: newDictionary
