@@ -1,0 +1,14 @@
+.nav  {
+  height:100%;
+  display:flex;
+  grid-column: 1/-1;
+  background-color: var(--color-secondary);
+
+  .title{
+    margin: 0;
+    font-weight: 700;
+    font-size: 26px;
+    padding: 3px 10px;
+    color: var(--color-tertiary);
+  }
+}

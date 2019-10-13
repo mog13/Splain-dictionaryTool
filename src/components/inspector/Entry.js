@@ -28,7 +28,7 @@ function Entry({entry,path,index}){
 
     if(isString) return <h1>wait</h1>;
 
-    return <div>
+    return <div className="inspector__entry">
         <input name="value" onChange={HandleUpdate}  type="text" defaultValue={entry.value}/>
         <input name="weight" onChange={HandleUpdate} type="number" defaultValue={entry.weight}/>
         <span>{JSON.stringify(entry.context)}</span>

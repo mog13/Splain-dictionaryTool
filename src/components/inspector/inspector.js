@@ -3,6 +3,9 @@ import DictionaryContext from "../../contexts/dictionary.context";
 
 import _ from 'lodash';
 import Entry from "./Entry";
+
+import './inspector.scss'
+
 function Inspector() {
     let {dictionary, activePath} = useContext(DictionaryContext);
     const [entries, setEntries] = useState(null);
@@ -18,8 +21,8 @@ function Inspector() {
         setKeyRoot(activePath);
     },[activePath]);
 
-    return <div>
-        <h1>{activePath}</h1>
+    return <div className="inspector">
+        <h1 className="inspector__title">{activePath}</h1>
         {entries && entries.map((entry,i)=><Entry key={`${keyRoot}.${i}`} entry={entry} path={activePath} index={i}/>)}
     </div>
 }

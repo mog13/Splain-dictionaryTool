@@ -1,0 +1,27 @@
+.inspector{
+  grid-column: span 3;
+  overflow: scroll;
+  padding: 32px;
+  color: var(--color-tertiary);
+  height: 75vh;
+
+  &__title{
+    margin-bottom: 15px;
+    margin-top: 0;
+    padding: 0;
+    color: var(--color-tertiary);
+    font-weight: 500;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  &__entry{
+    display: flex;
+    margin-bottom: 15px;
+
+   & > *{
+      margin-left: 16px;
+    }
+
+
+  }
+}

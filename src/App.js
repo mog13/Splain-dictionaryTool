@@ -5,6 +5,7 @@ import Explorer from "./components/explorer/Explorer";
 import Splain from "@mog13/splain"
 import Inspector from "./components/inspector/inspector";
 import Preview from "./components/preview/preview";
+import Nav from "./components/nav/Nav";
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
 
   return (
   <Editor loadedDictionary={dictionaryReference}>
-   <h1>{Splain.process('hello')}</h1>
+    <Nav/>
     <Explorer/>
     <Inspector/>
     <Preview/>

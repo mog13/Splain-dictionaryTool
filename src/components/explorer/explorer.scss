@@ -1,11 +1,27 @@
 .explorer {
+  grid-column: span 1;
+  background-color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  padding-left:12px;
+  border-right: solid 1px var(--color-secondary);
+  font-weight: bold;
+  color: var(--color-tertiary);
+  &__header{
+    font-size: 1em;
+    color: var(--color-accent);
+    text-decoration: underline;
+    margin-top: 8px;
+  }
+
   &__entry, &__dictionary-key {
-    padding-left: var(--grid-step);
+    padding-left: 16px;
     cursor: pointer;
 
     &__title {
       &--active {
-        font-weight: bold;
+        color:var(--color-accent);
+        text-decoration: underline;
       }
     }
   }

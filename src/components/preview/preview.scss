@@ -1,0 +1,16 @@
+.preview {
+  grid-column: 1/-1;
+  border-top:solid 1px var(--color-secondary) ;
+  color: white;
+  overflow: scroll;
+  max-height: var(--preview-height);
+  position: relative;
+
+  &__header{
+    display:flex;
+    padding:10px;
+    position: sticky;
+    top: 0;
+    background-color: var(--color-primary);
+  }
+}
