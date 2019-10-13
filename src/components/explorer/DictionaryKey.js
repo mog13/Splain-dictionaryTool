@@ -4,13 +4,13 @@ import DictionaryContext from "../../contexts/dictionary.context";
 import Entry from "./Entry";
 
 
-function DictionaryKey({path}) {
-    const {dictionary} = useContext(DictionaryContext);
+function DictionaryKey({path, initialOpen, hideEntry}) {
+    const {dictionary, activePath} = useContext(DictionaryContext);
     const [isCategory, setIsCategory] = useState(undefined);
     const [keys, setKeys] = useState(null);
     const [name, setName] = useState(null);
-    const [open, setOpen] = useState(false);
-
+    const [open, setOpen] = useState(initialOpen || false);
+    const [active, setActive] = useState(false);
     const toggle = () => {
         setOpen(!open);
     };
@@ -28,10 +28,15 @@ function DictionaryKey({path}) {
         }
     },[dictionary, path]);
 
-    const titleClassname = `explorer__dictionary-key__title ${open? 'explorer__dictionary-key__title--opened':''}`;
+    useEffect(()=>{
+        setActive(activePath.indexOf(path)>=0)
+    },[activePath, path]);
+
+    const titleClassname = `explorer__dictionary-key__title ${open? 'explorer__dictionary-key__title--opened':''} 
+    ${active? 'explorer__dictionary-key__title--active':'' }`;
 
     return <div >
-        {isCategory && <span className={titleClassname} onClick={toggle}>
+        {isCategory && !hideEntry && <span className={titleClassname} onClick={toggle}>
             {name}
         </span> }
         {isCategory && open && keys.map((key)=><div className="explorer__dictionary-key">
