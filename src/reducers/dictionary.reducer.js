@@ -7,6 +7,7 @@ const initialDictionaryState = {
 };
 
 function setSplainDictionary(newDictionary) {
+    localStorage.setItem('backup', JSON.stringify(newDictionary));
     Splain.addEntry(Object.assign({}, newDictionary.entries));
 }
 

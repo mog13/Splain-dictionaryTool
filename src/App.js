@@ -8,8 +8,8 @@ import Preview from "./components/preview/preview";
 import Nav from "./components/nav/Nav";
 
 function App() {
-
-    const dictionaryReference = Object.assign({},Splain.dictionaries.default);
+    let backupDictionary = localStorage.getItem('backup');
+    const dictionaryReference = backupDictionary ? JSON.parse(backupDictionary) :  Splain.dictionaries.default;
 
   return (
   <Editor loadedDictionary={dictionaryReference}>
