@@ -1,15 +1,18 @@
 .explorer {
   grid-column: span 1;
-  background-color: var(--color-primary);
+  background-color: var(--color-white);
   display: flex;
   flex-direction: column;
   padding-left:12px;
   border-right: solid 1px var(--color-secondary);
   font-weight: bold;
-  color: var(--color-tertiary);
+  color: var(--colour-ink);
+  box-shadow: black -1px 0px 10px -2px;
+
+
   &__header{
     font-size: 1em;
-    color: var(--color-accent);
+    color: var(--color-secondary);
     text-decoration: underline;
     margin-top: 8px;
   }
