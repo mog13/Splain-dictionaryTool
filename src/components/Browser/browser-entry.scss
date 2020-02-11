@@ -1,0 +1,12 @@
+.browser-entry {
+margin-left: 10px;
+
+  &__name {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  &__entries{
+    margin-left: 10px;
+    cursor: pointer;
+  }
+}
