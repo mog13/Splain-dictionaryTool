@@ -1,0 +1,16 @@
+html, body, #root {
+  background-color: var(--color-white);
+  height:100%;
+}
+* {
+  font-family: 'Source Sans Pro', sans-serif;
+  box-sizing: border-box;
+}
+
+
+.app-container{
+  height:100%;
+  display: grid;
+  grid-template-columns:  3fr 7fr;
+  grid-template-rows: minmax(auto,80%) 20%;
+}

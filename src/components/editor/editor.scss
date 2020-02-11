@@ -1,6 +1,0 @@
-.editor {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  grid-template-rows:  40px minmax(80vh, auto) minmax( var(--preview-height), auto);
-}
-
