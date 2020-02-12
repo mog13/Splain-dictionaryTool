@@ -1,0 +1,18 @@
+.context-editor {
+  &__existing {
+    .context {
+
+      &__name {
+        display: inline;
+      }
+
+      &__entry {
+        display: inline;
+        background-color: cadetblue;
+        margin:2px 4px;
+        padding:2px;
+        cursor: pointer;
+      }
+    }
+  }
+}

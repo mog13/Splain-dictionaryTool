@@ -5,6 +5,7 @@ import {getEntries} from "../../store/reducers/DictionaryReducer";
 
 
 import './browser.scss';
+import BrowserNav from "./BrowserNav";
 
 
 function Browser() {
@@ -12,7 +13,7 @@ function Browser() {
     const entries = useSelector(getEntries);
 
     return <div className="browser">
-        <h1>i am browser</h1>
+        <BrowserNav/>
         <BrowserEntry key={'root'} entries={entries}/>
     </div>
 
