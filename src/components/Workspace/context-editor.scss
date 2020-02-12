@@ -1,17 +1,46 @@
 .context-editor {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__new {
+    display: flex;
+  }
+
   &__existing {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    overflow: scroll;
+
     .context {
+      flex-grow: 1;
+      max-width: 30%;
+      margin: 6px;
+      background-color: white;
 
       &__name {
-        display: inline;
+        background-color: blue;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      &__entries {
+        padding: 6px 0;
+        line-height: 1.4rem;
       }
 
       &__entry {
         display: inline;
         background-color: cadetblue;
-        margin:2px 4px;
-        padding:2px;
+        margin: 2px 4px;
+        padding: 2px 6px;
         cursor: pointer;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        white-space: nowrap;
       }
     }
   }

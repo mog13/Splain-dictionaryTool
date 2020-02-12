@@ -3,6 +3,8 @@ import ToolbarNav from "./ToolbarNav";
 import {ToolbarContext} from "../../contexts";
 import buttons from './ToolbarNavButtons';
 
+import './toolbar.scss';
+
 function Toolbar() {
     const [activeWindow, setActiveWindow] = useState('preview');
     const [activeButton, setActiveButton] = useState(null);
@@ -14,7 +16,7 @@ function Toolbar() {
     return <div className="toolbar">
         <ToolbarContext.Provider value={{activeWindow, setActiveWindow}}>
             <ToolbarNav/>
-            <div>
+            <div className="toolbar__window">
                 {activeButton? activeButton.component : <h1> unimplemented </h1>}
             </div>
         </ToolbarContext.Provider>

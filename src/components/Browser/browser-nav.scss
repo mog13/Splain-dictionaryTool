@@ -1,5 +1,34 @@
-.browser-nav{
-  &__file-load{
-    display: none;
+.browser-nav {
+  &__toolbox {
+    display: flex;
+
+
+    button {
+      flex-grow: 1;
+      padding:5px;
+      cursor: pointer;
+    }
+    .file-load {
+      display: none;
+    }
+
+    .auto-save{
+      color:maroon;
+      &--active{
+        color:lime;
+      }
+    }
+  }
+
+  &__name {
+    display: flex;
+    padding:5px;
+    &__form {
+      flex-grow: 1;
+    }
+
+    &__input {
+      width: 100%;
+    }
   }
 }

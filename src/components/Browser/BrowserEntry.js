@@ -1,15 +1,17 @@
 import React, {useState, useRef} from "react";
 
 import './browser-entry.scss';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addEntry, promoteDictionaryEntry, setSelectedEntry, updateName} from "../../store/actions/DictionaryActions";
 import _ from 'lodash';
+import {getSelected} from "../../store/reducers/DictionaryReducer";
 
-function BrowserEntry({entries, name}) {
+function BrowserEntry({entries, name, classNames}) {
     const [collapsed, setCollapsed] = useState(name);
     const [changingName, setChangingName] = useState(null);
     const newEntryRef = useRef(null);
     const newNameRef = useRef(null);
+    const selected = useSelector(getSelected);
     const dispatch = useDispatch();
 
     function toggle() {
@@ -48,7 +50,7 @@ function BrowserEntry({entries, name}) {
     function renderEntriesChangeName(path, name) {
         function finishedChanging(e) {
             e.preventDefault();
-            if(newNameRef.current.value) {
+            if (newNameRef.current.value) {
                 dispatch(updateName(path, name, newNameRef.current.value))
             }
             setChangingName(null);
@@ -64,20 +66,23 @@ function BrowserEntry({entries, name}) {
         parts = name.split('.');
         targetName = parts.pop();
     }
-    return <div className="browser-entry">
+
+    return <div className={`browser-entry ${classNames}`}>
 
         {name && (changingName === name ? renderEntriesChangeName(parts.join('.'), targetName) :
             <p className="browser-entry__name" onClick={(e) => {
                 handleNameClick(e, name);
-            }}>${name} </p>)}
+            }}>{name} {collapsed ? '+' : '-'} </p>)}
 
         {!collapsed && Object.keys(entries).map(key => {
             const fullPath = `${name}.${key}`;
             if (!Array.isArray(entries[key])) {
-                return <BrowserEntry key={`dictionary-entry-${key}-${entries[key].toolIndex}`} name={name ? fullPath : key} entries={entries[key]}/>;
+                return <BrowserEntry key={`dictionary-entry-${key}-${entries[key].toolIndex}`}
+                                     name={name ? fullPath : key} entries={entries[key]}/>;
             } else {
                 if (changingName === fullPath || changingName === key) return renderEntriesChangeName(name, key);
-                return <p key={`entries-${key}-${entries[key].toolIndex}`} className="browser-entry__entries"
+                return <p key={`entries-${key}-${entries[key].toolIndex}`}
+                          className={`browser-entry__entries ${(selected === key || selected === fullPath) ? 'browser-entry__entries--active' : ''} `}
                           onClick={(e) => {
                               handleEntriesClicked(e, name ? fullPath : key)
                           }}>

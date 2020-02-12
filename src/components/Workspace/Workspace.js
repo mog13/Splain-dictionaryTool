@@ -5,6 +5,9 @@ import WorkspaceEntry from "./WorkSpaceEntry";
 import {addEntry} from "../../store/actions/DictionaryActions";
 import _ from 'lodash';
 
+import './workspace.scss'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
 function Workspace() {
 
     const selected = useSelector(getSelected);
@@ -28,14 +31,13 @@ function Workspace() {
     if(!selected) return <div className="workspace"/>;
 
     return <div className="workspace">
-        <h1>{selected}</h1>
+        <h1 className="worksapce__path"> {selected}</h1>
         {entries.map(entry => {
             return <WorkspaceEntry entry={entry} key={`${entry.value}-${entry.toolIndex}`}/>;
         })}
-        <button className="workspace__add-entry" onClick={addNewEntry}>
-            Add new entry
-        </button>
-        <p>{JSON.stringify(entries)}</p>
+        <div className="workspace__add-entry" onClick={addNewEntry}>
+           <FontAwesomeIcon icon={"plus"} size={"xl"}/>
+        </div>
     </div>
 }
 

@@ -1,17 +1,28 @@
 .browser-entry {
-margin-left: 10px;
+  --entry-offset-left: 16px;
+  --entry-offest-vertical: .5rem;
+  margin-left: var(--entry-offset-left);
 
+  &--initial {
+    margin-left: 0;
+  }
   &__name {
     cursor: pointer;
     text-decoration: underline;
+    margin: var(--entry-offest-vertical) 0;
   }
   &__entries{
-    margin-left: 10px;
+    margin: var(--entry-offest-vertical) 0;
+    margin-left: var(--entry-offset-left);
     cursor: pointer;
+
+    &--active{
+      font-weight: bold;
+    }
   }
 
   &__new {
-    margin-left: 10px;
+    margin-left: var(--entry-offset-left);
     opacity: 0.5;
   }
 }

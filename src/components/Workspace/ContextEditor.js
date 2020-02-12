@@ -4,6 +4,7 @@ import './context-editor.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {getSelected} from "../../store/reducers/DictionaryReducer";
 import {updateEntry} from "../../store/actions/DictionaryActions";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function ContextEditor({entry}) {
     const path = useSelector(getSelected);
@@ -34,21 +35,24 @@ function ContextEditor({entry}) {
     }
 
     return <div className="context-editor">
-        <div className="context-editor__existing">
-            {entry.contexts && Object.keys(entry.contexts).map(key => {
-                return <div key={key} className="context">
-                    <h4 className="context__name">{key}</h4>
-                    {Object.values(entry.contexts[key]).map(context => {
-                        return <p  onClick={()=>{removeContext(key,context)}} className="context__entry" key={`${key}.${context}`}> {context}</p>
-                    })}
-                </div>
-            })}
-        </div>
         <div className="context-editor__new">
             <input placeholder="context type" ref={contextTypeRef}/>
             <form onSubmit={addContext}>
                 <input placeholder="context value" ref={contextEntryRef} onBlur={addContext} />
             </form>
+        </div>
+        <div className="context-editor__existing">
+            {entry.contexts && Object.keys(entry.contexts).map(key => {
+                return <div key={key} className="context">
+                    <h4 className="context__name">{key}</h4>
+                    <div className="context__entries">
+                    {Object.values(entry.contexts[key]).map(context => {
+                        return <p  onClick={(e)=>{if(e.altKey) removeContext(key,context)}} className="context__entry" key={`${key}.${context}`}>
+                            {context}</p>
+                    })}
+                    </div>
+                </div>
+            })}
         </div>
     </div>;
 }

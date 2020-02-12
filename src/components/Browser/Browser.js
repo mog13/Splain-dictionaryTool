@@ -13,8 +13,8 @@ function Browser() {
     const entries = useSelector(getEntries);
 
     return <div className="browser">
-        <BrowserNav/>
-        <BrowserEntry key={'root'} entries={entries}/>
+        <BrowserNav />
+        <BrowserEntry key={'root'} entries={entries} classNames="browser-entry--initial"/>
     </div>
 
 }

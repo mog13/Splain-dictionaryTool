@@ -4,13 +4,15 @@ import {getAutoSave, getDictionaryName, getEntries} from "../../store/reducers/D
 import {newDictionary, toggleAutoSave, updateDictionaryName} from "../../store/actions/DictionaryActions";
 
 import './browser-nav.scss';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function BrowserNav() {
     const entries = useSelector(getEntries);
     const dispatch = useDispatch();
     const nameRef = useRef(null);
     const name = useSelector(getDictionaryName);
-const autoSave = useSelector(getAutoSave);
+    const autoSave = useSelector(getAutoSave);
+
     function download(content, fileName, contentType) {
         let a = document.createElement("a");
         let file = new Blob([content], {type: contentType});
@@ -47,26 +49,37 @@ const autoSave = useSelector(getAutoSave);
     }
 
     function loadLocalDictionary() {
-        let loadedDictionary = localStorage.getItem(`splain_${name}`);
-        if (loadedDictionary) dispatch(newDictionary(JSON.parse(loadedDictionary)));
+        let loadName = prompt('What dictionary would you like to load?', name );
+        let loadedDictionary = localStorage.getItem(`splain_${loadName}`);
+        if (loadedDictionary) {
+            dispatch(newDictionary(JSON.parse(loadedDictionary)));
+            dispatch(updateDictionaryName(loadName));
+            nameRef.current.value = loadName;
+        }
     }
 
     function saveLocal() {
-        localStorage.setItem(`splain_${name}`,JSON.stringify(entries))
+        localStorage.setItem(`splain_${name}`, JSON.stringify(entries))
     }
 
 
-    return <div className="browserNav">
-        <form onSubmit={handleNameChange}>
-            <input defaultValue={name} ref={nameRef} onBlur={handleNameChange}/>
-        </form>
-        <button onClick={saveDictionary}>save</button>
-        <button onClick={loadDictionary}>loadFile</button>
-        <button onClick={loadLocalDictionary}>loadLocal</button>
-        <button onClick={saveLocal}>SaveLocal</button>
-        <button onClick={handleToggleAutoSave}>AS {autoSave?1:0}</button>
+    return <div className="browser-nav">
+        <div className="browser-nav__name">
+            <label>Name: </label>
+            <form onSubmit={handleNameChange} className="browser-nav__name__form">
+                <input className="browser-nav__name__input" defaultValue={name} ref={nameRef}
+                       onBlur={handleNameChange}/>
+            </form>
+        </div>
+        <div className="browser-nav__toolbox">
+            <button onClick={saveDictionary}><FontAwesomeIcon icon="download" size={"lg"}/></button>
+            <button onClick={loadDictionary}><FontAwesomeIcon icon="upload" size={"lg"}/></button>
+            <button onClick={saveLocal}><FontAwesomeIcon icon="save" size={"lg"}/></button>
+            <button onClick={loadLocalDictionary}><FontAwesomeIcon icon="cloud-upload-alt" size={"lg"}/></button>
+            <button onClick={handleToggleAutoSave} className={`auto-save ${autoSave?'auto-save--active': ''}`}><FontAwesomeIcon icon="piggy-bank" size={"lg"}/></button>
 
-        <input id="file" type="file" className="browser-nav__file-load" onChange={onInputChange}/>
+            <input id="file" type="file" className="file-load" onChange={onInputChange}/>
+        </div>
     </div>
 }
 
