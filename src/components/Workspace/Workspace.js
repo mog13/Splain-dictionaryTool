@@ -31,7 +31,7 @@ function Workspace() {
     if(!selected) return <div className="workspace"/>;
 
     return <div className="workspace">
-        <h1 className="worksapce__path"> {selected}</h1>
+        <h1 className="workspace__path"> {selected}</h1>
         {entries.map(entry => {
             return <WorkspaceEntry entry={entry} key={`${entry.value}-${entry.toolIndex}`}/>;
         })}

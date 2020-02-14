@@ -1,15 +1,20 @@
 .browser-entry {
-  --entry-offset-left: 16px;
-  --entry-offest-vertical: .5rem;
+  --entry-offset-left: 24px;
+  --entry-offest-vertical: .7rem;
   margin-left: var(--entry-offset-left);
+  margin-bottom: 8px;
+  margin-top: 8px;
 
   &--initial {
     margin-left: 0;
   }
   &__name {
     cursor: pointer;
-    text-decoration: underline;
+    display: inline;
     margin: var(--entry-offest-vertical) 0;
+    p {
+      display: inline;
+    }
   }
   &__entries{
     margin: var(--entry-offest-vertical) 0;

@@ -1,14 +1,17 @@
 .workspace {
-  padding:8px;
+  padding: 16px 24px;
   width:100%;
   height:100%;
   overflow: scroll;
+  background-color: var(--colour-dark);
 
   &__path {
     position: sticky;
-    top: -8px;
+    top: -16px;
     z-index: 1;
-    background-color: white;
+    background-color: var(--colour-dark);
+    color: var(--colour-light);
+    text-decoration: underline;
   }
 
   &__add-entry {
@@ -17,9 +20,10 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    color: var(--colour-light);
 
     svg {
-      width: 2rem;
+      width: 2rem!important;
       height: 2rem;
     }
   }

@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addEntry, promoteDictionaryEntry, setSelectedEntry, updateName} from "../../store/actions/DictionaryActions";
 import _ from 'lodash';
 import {getSelected} from "../../store/reducers/DictionaryReducer";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function BrowserEntry({entries, name, classNames}) {
     const [collapsed, setCollapsed] = useState(name);
@@ -67,12 +68,12 @@ function BrowserEntry({entries, name, classNames}) {
         targetName = parts.pop();
     }
 
-    return <div className={`browser-entry ${classNames}`}>
+    return <div className={`browser-entry ${classNames||''}`}>
 
         {name && (changingName === name ? renderEntriesChangeName(parts.join('.'), targetName) :
-            <p className="browser-entry__name" onClick={(e) => {
+           <div className="browser-entry__name"><FontAwesomeIcon icon={"share-alt"} size={"xs"}/> <p className="" onClick={(e) => {
                 handleNameClick(e, name);
-            }}>{name} {collapsed ? '+' : '-'} </p>)}
+            }}> {name} {collapsed ? '+' : '-'} </p></div>)}
 
         {!collapsed && Object.keys(entries).map(key => {
             const fullPath = `${name}.${key}`;

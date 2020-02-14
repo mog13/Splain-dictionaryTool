@@ -1,25 +1,43 @@
 .workspace-entry{
-  background-color: aquamarine;
+  background-color: var(--colour-light);
   margin: 16px 0;
-  padding: 16px;
   display: flex;
   width:100%;
   max-height: 300px;
   min-height: 150px;
   position: relative;
+  border-radius: var(--border-radius);
+  box-shadow: 5px 5px 5px -3px rgba(255, 255, 255, 0.22);
 
   &__delete {
     position: absolute;
     top:0;
     right:0;
     cursor: pointer;
+    padding: 6px;
+    background-color: transparent;
+    color: var(--colour-dark);
   }
 
   &__details {
     text-align: center;
     max-width: 300px;
     min-width: 200px;
-    margin-right:5%;
+    margin-right: 5%;
+    background-color: var(--colour-dark);
+    border: var(--colour-light) 8px solid;
+    border-radius: 4px;
+    color: var(--colour-light);
+    padding: 16px;
+
+    input {
+      font-weight: bold;
+      font-size: 1.5rem;
+      width: 100%;
+      padding-bottom: 4px;
+      border-color: var(--colour-light);
+      color: var(--colour-light);
+    }
     &__weights{
       width: 100%;
       display: flex;

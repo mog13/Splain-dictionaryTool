@@ -15,10 +15,10 @@ import {
     faCloudUploadAlt,
     faPlus,
     faMinus,
-    faTrash
+    faTrash, faShareAlt
 } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faDownload, faUpload, faSave, faPiggyBank, faCloudUploadAlt, faPlus, faMinus, faTrash);
+library.add(faDownload, faUpload, faSave, faPiggyBank, faCloudUploadAlt, faPlus, faMinus, faTrash,faShareAlt);
 
 
 function App() {

@@ -64,13 +64,7 @@ function BrowserNav() {
 
 
     return <div className="browser-nav">
-        <div className="browser-nav__name">
-            <label>Name: </label>
-            <form onSubmit={handleNameChange} className="browser-nav__name__form">
-                <input className="browser-nav__name__input" defaultValue={name} ref={nameRef}
-                       onBlur={handleNameChange}/>
-            </form>
-        </div>
+
         <div className="browser-nav__toolbox">
             <button onClick={saveDictionary}><FontAwesomeIcon icon="download" size={"lg"}/></button>
             <button onClick={loadDictionary}><FontAwesomeIcon icon="upload" size={"lg"}/></button>
@@ -79,6 +73,13 @@ function BrowserNav() {
             <button onClick={handleToggleAutoSave} className={`auto-save ${autoSave?'auto-save--active': ''}`}><FontAwesomeIcon icon="piggy-bank" size={"lg"}/></button>
 
             <input id="file" type="file" className="file-load" onChange={onInputChange}/>
+        </div>
+        <div className="browser-nav__name">
+            <label>Name: </label>
+            <form onSubmit={handleNameChange} className="browser-nav__name__form">
+                <input className="browser-nav__name__input" defaultValue={name} ref={nameRef}
+                       onBlur={handleNameChange}/>
+            </form>
         </div>
     </div>
 }

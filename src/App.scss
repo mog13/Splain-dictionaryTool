@@ -1,5 +1,5 @@
 html, body, #root {
-  background-color: var(--color-white);
+  background-color: var(--colour-light);
   height:100%;
 }
 * {
@@ -7,6 +7,26 @@ html, body, #root {
   box-sizing: border-box;
 }
 
+:root {
+  --colour-dark: #1c2c5c;
+  --colour-light: #e6e6e6;
+  --border-radius :4px;
+}
+
+input {
+  background-color: transparent;
+  outline: none;
+  border:none;
+  border-bottom: var(--colour-dark) 2px solid;
+}
+
+button {
+  background-color: var(--colour-dark);
+  color: var(--colour-light);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
 
 .app-container{
   height:100%;

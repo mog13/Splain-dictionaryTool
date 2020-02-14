@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {ToolbarContext} from "../../contexts";
 
 import buttons from './ToolbarNavButtons';
+import './toolbar-nav.scss'
 
 function ToolbarNav() {
 
