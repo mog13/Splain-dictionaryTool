@@ -87,7 +87,6 @@ function reduceDeictionary() {
             };
         case 'NEW_DICT':
             Splain.newDictionary(action.dictionary);
-            Splain.addEntry({test: ['morgan']});
             return {
                 ...state,
                 entries: tagEntries(Splain.dictionary.entries)

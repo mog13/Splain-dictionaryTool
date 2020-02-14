@@ -62,10 +62,15 @@ function BrowserNav() {
         localStorage.setItem(`splain_${name}`, JSON.stringify(entries))
     }
 
+    function createNewDictionary() {
+        dispatch(newDictionary({hello:['world']}));
+    }
+
 
     return <div className="browser-nav">
 
         <div className="browser-nav__toolbox">
+            <button onClick={createNewDictionary}><FontAwesomeIcon icon="book-medical" size={"lg"}/></button>
             <button onClick={saveDictionary}><FontAwesomeIcon icon="download" size={"lg"}/></button>
             <button onClick={loadDictionary}><FontAwesomeIcon icon="upload" size={"lg"}/></button>
             <button onClick={saveLocal}><FontAwesomeIcon icon="save" size={"lg"}/></button>
